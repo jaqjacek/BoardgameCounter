@@ -1,18 +1,8 @@
 package;
 
-
-import lime.ui.Gamepad;
-import lime.ui.GamepadButton;
-import openfl.display.FPS;
 import openfl.display.Sprite;
-import openfl.display.Tile;
-import openfl.display.Tilemap;
-import openfl.display.Tileset;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
-import openfl.events.TouchEvent;
-import openfl.utils.Assets;
-import openfl.Vector;
 import Std;
 
 class Main extends Sprite {
@@ -39,8 +29,7 @@ class Main extends Sprite {
 	private function hardCodedValues():GameConfig {
 		var gameConfig:GameConfig = new HardCodedGameConfig();		
 		return gameConfig;
-	}
-	
+	}	
 	
 	public function startGame() {
 		_currentClickedTimer = -1;
