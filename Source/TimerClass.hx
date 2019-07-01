@@ -28,8 +28,7 @@ class TimerClass extends Sprite
 	
 	function initText():Void 
 	{
-		timerTF = new TextField();
-		
+		timerTF = new TextField();		
 		timerTF.width = width / 2;
 		timerTF.x = width / 4;
 		
@@ -58,7 +57,7 @@ class TimerClass extends Sprite
 		var seconds:Int = tmpTime % 60;
 		tmpFloat =  tmpTime / 60;
 		tmpTime = Std.int(tmpFloat);
-		var minutes:Int = tmpTime;
+		var minutes:Int = tmpTime % 60;
 		tmpTime = Std.int(tmpTime / 60);
 		var houers = tmpTime;
 		
