@@ -59,8 +59,11 @@ class Main extends Sprite {
 	{
 		var eventTimer:TimerClass = cast(e.currentTarget, TimerClass);
 		var index:Int = _timers.indexOf(eventTimer);
-		if (index != _currentClickedTimer) {
+		if(_currentClickedTimer != -1)
+			_timers[_currentClickedTimer].active = false;
+		if (index != _currentClickedTimer) {					
 			_currentClickedTimer = index;
+			_timers[_currentClickedTimer].active = true;
 			_tickTime = -1;
 			stage.addEventListener(Event.ENTER_FRAME, tickListener);	
 		}

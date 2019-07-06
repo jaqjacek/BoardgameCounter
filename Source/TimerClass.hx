@@ -4,6 +4,7 @@ import openfl.display.Sprite;
 import openfl.text.AntiAliasType;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
+import openfl.text.TextFormatAlign;
 
 /**
  * ...
@@ -13,6 +14,7 @@ class TimerClass extends Sprite
 {
 	public var totalTime:Int;
 	private var timerTF:TextField;
+	@:isVar public var active(get, set):Bool; 
 
 	public function new(width:Int,height:Int,color:Int) 
 	{
@@ -26,6 +28,18 @@ class TimerClass extends Sprite
 		upddateTime();
 	}
 	
+	function showBorder():Void 
+	{
+		this.timerTF.border = true;
+		this.timerTF.borderColor = 0x000000;	
+	}
+	
+	function hideBoarder():Void 
+	{
+		this.timerTF.border = false;
+	}
+	
+	
 	function initText():Void 
 	{
 		timerTF = new TextField();		
@@ -33,12 +47,13 @@ class TimerClass extends Sprite
 		timerTF.x = width / 4;
 		
 		timerTF.antiAliasType = AntiAliasType.ADVANCED;
-		timerTF.sharpness = 100;		
+		timerTF.sharpness = 100;				
 		displayTime();
 		//proper Y position
 		
 		var tf:TextFormat = timerTF.getTextFormat(0, 1);
 		tf.size = 72;	
+		tf.align = TextFormatAlign.CENTER;
 		timerTF.setTextFormat(tf);
 		timerTF.selectable = false;
 		displayTime();
@@ -67,6 +82,20 @@ class TimerClass extends Sprite
 		var text:String = houersString + " : " + minutesString + " : " + secondsString;
 		timerTF.text = text;
 		
+		
+	}
+	
+	public function get_active():Bool 
+	{
+		
+		return active;
+	
+	}
+	
+	public function set_active(value:Bool):Bool 
+	{
+		value == true ? showBorder(): hideBoarder();
+		return active = value;
 	}
 	
 }
